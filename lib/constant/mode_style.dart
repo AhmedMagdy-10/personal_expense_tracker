@@ -6,9 +6,13 @@ ThemeData lightTheme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
-    fontFamily: 'Cairo',
-    scaffoldBackgroundColor: const Color(0xff141414),
-    brightness: Brightness.dark,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xff141414),
-    ));
+  fontFamily: 'Cairo',
+  scaffoldBackgroundColor: const Color(0xff141414),
+  brightness: Brightness.dark,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color(0xff141414),
+  ),
+  buttonTheme: const ButtonThemeData(
+    buttonColor: Colors.redAccent,
+  ),
+);

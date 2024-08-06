@@ -129,6 +129,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Continue`
+  String get buttonDetailsText {
+    return Intl.message(
+      'Continue',
+      name: 'buttonDetailsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details Of Mony`
+  String get DetailsAppBar {
+    return Intl.message(
+      'Details Of Mony',
+      name: 'DetailsAppBar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `selected Currency`
+  String get selectedCurrency {
+    return Intl.message(
+      'selected Currency',
+      name: 'selectedCurrency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance`
+  String get selectedBalance {
+    return Intl.message(
+      'Balance',
+      name: 'selectedBalance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

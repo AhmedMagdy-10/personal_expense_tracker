@@ -6,5 +6,9 @@
     "system": "وضع النظام",
     "language": "اختر اللغة: ",
     "English": "الإنجليزية",
-    "Arabic": "العربية"
+    "Arabic": "العربية",
+    "buttonDetailsText": "تابع",
+    "DetailsAppBar": "تفاصيل عن الاموال",
+    "selectedCurrency": "اختر العملة",
+    "selectedBalance": "الرصيد"
 }

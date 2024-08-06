@@ -6,5 +6,9 @@
     "system": "System Mode",
     "language": "Chosse Language : ",
     "English": "English",
-    "Arabic": "العربية"
+    "Arabic": "العربية",
+    "buttonDetailsText": "Continue",
+    "DetailsAppBar": "Details Of Mony",
+    "selectedCurrency": "selected Currency",
+    "selectedBalance": "Balance"
 }
