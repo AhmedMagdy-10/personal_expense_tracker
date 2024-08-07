@@ -1,6 +1,8 @@
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_expense_tracker/generated/l10n.dart';
+import 'package:personal_expense_tracker/views/home_page.dart';
+import 'package:personal_expense_tracker/views/widgets/custom_button.dart';
 import 'package:personal_expense_tracker/views/widgets/custom_text_field.dart';
 
 class DetailsOfMony extends StatefulWidget {
@@ -46,6 +48,27 @@ class _DetailsOfMonyState extends State<DetailsOfMony> {
                 suffixIcon: const Icon(
                   Icons.account_balance_wallet_rounded,
                 ),
+              ),
+              const Spacer(),
+              CustomButton(
+                onTapButton: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                      (route) => false);
+                },
+                child: const Text(
+                  'تاكيد',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
             ],
           ),

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'package:personal_expense_tracker/constant/mode_style.dart';
+import 'package:personal_expense_tracker/constant/user_id.dart';
 import 'package:personal_expense_tracker/core/helper/cache_helper.dart';
 import 'package:personal_expense_tracker/generated/l10n.dart';
 import 'package:personal_expense_tracker/logic/cubit/start_view_cubit.dart';
 import 'package:personal_expense_tracker/logic/cubit/start_view_states.dart';
+import 'package:personal_expense_tracker/views/home_page.dart';
 import 'package:personal_expense_tracker/views/start_view.dart';
 
 void main() async {
@@ -13,7 +16,7 @@ void main() async {
   await CacheHelper.init();
 
   final savedMode = await CacheHelper.getSaveData(key: 'mode');
-  // final deviceId = await UserIdManger.getDeviceId();
+  final deviceId = await UserIdManger.getDeviceId();
 
   runApp(MyApp(
     savedMode: savedMode,
@@ -44,6 +47,7 @@ class MyApp extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
+            MonthYearPickerLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
           theme: lightTheme,
@@ -52,7 +56,7 @@ class MyApp extends StatelessWidget {
           color: Colors.black,
           locale: BlocProvider.of<StartViewCubit>(context).language,
           debugShowCheckedModeBanner: false,
-          home: const StartView(),
+          home: const HomePage(),
         );
       }),
     );
