@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:month_year_picker/month_year_picker.dart';
-import 'package:personal_expense_tracker/constant/icon_broken.dart';
+import 'package:personal_expense_tracker/views/widgets/custom_calender.dart';
+import 'package:personal_expense_tracker/views/widgets/income_outcome_mony.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -49,134 +50,70 @@ class _HomePageState extends State<HomePage> {
         title: const Text('مصروفاتي'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.chevron_left,
-                  size: 40,
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            CustomCalender(
+              previousOnTap: previousMonth,
+              nextOnTap: nextMonth,
+              selectedDate: selectedDate,
+              onTapMonths: () {
+                setState(() {
+                  selectMonth(context);
+                });
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              '..Account Balance',
+              style: TextStyle(
+                color: Colors.grey[400],
+              ),
+            ),
+            const Text.rich(
+              TextSpan(
+                text: 'EGP  ',
+                style: TextStyle(
+                  fontSize: 18,
                 ),
-                onPressed: previousMonth,
-              ),
-              const SizedBox(
-                width: 40,
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectMonth(context);
-                  });
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.calendar_month_outlined,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        DateFormat('yMMMM').format(selectedDate),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
+                children: [
+                  TextSpan(
+                    text: '9400',
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
+                ],
               ),
-              const SizedBox(
-                width: 40,
-              ),
-              if (selectedDate.month < DateTime.now().month)
-                IconButton(
-                  icon: const Icon(
-                    Icons.chevron_right,
-                    size: 40,
-                  ),
-                  onPressed: nextMonth,
-                ),
-            ],
-          ),
-          const Text(
-            'Account Balance',
-            style: TextStyle(
-              color: Colors.grey,
             ),
-          ),
-          const Text(
-            'EGP 9400',
-            style: TextStyle(
-              fontSize: 40,
+            const SizedBox(
+              height: 20,
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: const Color(0xff00A86B),
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
+            const Row(
               children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Income',
-                      style: TextStyle(
-                        fontSize: 17,
-                      ),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        text: 'EGP',
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: '5000',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                IcomeOutcomeMony(
+                  textName: 'Expenses',
+                  amount: 1200,
+                  imageIcon: 'assets/image/Frame 26.png',
+                  color: Color(0xffFD3C4A),
                 ),
-                const SizedBox(
-                  width: 10,
+                SizedBox(
+                  width: 20,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Image.asset(
-                    'assets/image/Frame 27.png',
-                    fit: BoxFit.scaleDown,
-                    width: 28,
-                  ),
+                IcomeOutcomeMony(
+                  textName: 'Icome',
+                  amount: 5000,
+                  imageIcon: 'assets/image/Frame 27.png',
+                  color: Color(0xff00A86B),
                 ),
               ],
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
