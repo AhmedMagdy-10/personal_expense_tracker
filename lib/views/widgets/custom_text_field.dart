@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.readOnly,
     this.textAlign,
+    this.validator,
   });
 
   final TextEditingController? controller;
@@ -21,9 +22,11 @@ class CustomTextField extends StatelessWidget {
   final bool? readOnly;
   final TextAlign? textAlign;
   final void Function()? onTap;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: validator,
       readOnly: readOnly ?? false,
       textAlign: textAlign ?? TextAlign.start,
       onTap: onTap,
